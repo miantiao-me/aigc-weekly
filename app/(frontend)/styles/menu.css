@@ -136,6 +136,10 @@
     display: none;
   }
 
+  .menu--desktop.menu--theme-selector {
+    display: flex;
+  }
+
   .menu--mobile .menu__trigger {
     display: block;
   }
