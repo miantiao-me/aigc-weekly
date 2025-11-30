@@ -7,7 +7,6 @@ import { Pagination } from '@/components/theme/Pagination'
 import { PostMeta } from '@/components/theme/PostMeta'
 import { TagList } from '@/components/theme/TagList'
 import { TerminalLayout } from '@/components/theme/TerminalLayout'
-import { siteConfig } from '@/lib/config'
 import { getWeeklyBySlug } from '@/lib/weekly/data'
 
 interface WeeklyDetailPageProps {
@@ -22,12 +21,12 @@ export async function generateMetadata({ params }: WeeklyDetailPageProps): Promi
 
   if (!weekly) {
     return {
-      title: `周刊未找到 - ${siteConfig.title}`,
+      title: `周刊未找到`,
     }
   }
 
   return {
-    title: `${weekly.title} - ${siteConfig.title}`,
+    title: `${weekly.title}`,
     description: weekly.summary,
   }
 }
