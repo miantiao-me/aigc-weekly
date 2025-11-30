@@ -8,7 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const weeklyResult = await getWeeklyList({ pageSize: 9999 })
   const weeks = weeklyResult.items
 
-  const baseUrl = siteConfig.metadataBase.toString().replace(/\/$/, '')
+  const baseUrl = siteConfig.metadataBase && siteConfig.metadataBase.toString().replace(/\/$/, '')
 
   const weeklyUrls = weeks.map(week => ({
     url: `${baseUrl}/weekly/${week.slug}`,

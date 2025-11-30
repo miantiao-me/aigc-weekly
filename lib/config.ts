@@ -35,7 +35,6 @@ export const siteConfig = {
   },
   alternates: {
     types: {
-      title,
       'application/rss+xml': `${process.env.NEXT_PUBLIC_BASE_URL}/rss.xml`,
     },
   },
