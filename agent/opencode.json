@@ -69,6 +69,10 @@
         "gemini-3-flash-preview": {
           "name": "Gemini 3 Flash Preview",
           "limit": { "context": 1000000, "output": 64000 }
+        },
+        "gemini-3-pro-preview": {
+          "name": "Gemini 3 Pro Preview",
+          "limit": { "context": 1000000, "output": 64000 }
         }
       }
     },

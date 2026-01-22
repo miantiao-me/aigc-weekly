@@ -1,5 +1,6 @@
 import { Container, getContainer } from '@cloudflare/containers'
 import { env } from 'cloudflare:workers'
+import { processSSEStream } from './sse'
 
 const PORT = 2442
 
@@ -23,14 +24,17 @@ export class AgentContainer extends Container {
       const res = await this.containerFetch('http://container/global/event')
       const reader = res.body?.getReader()
       if (reader) {
-        while (true) {
-          const { done } = await reader.read()
-          console.info('Renewed container activity timeout, done:', done)
-          if (done)
-            break
-          await new Promise(resolve => setTimeout(resolve, 60_000))
-          this.renewActivityTimeout()
-        }
+        await processSSEStream(reader, (event) => {
+          const eventType = event.payload?.type
+
+          if (eventType !== 'message.part.updated')
+            console.info('SSE event:', event.payload)
+
+          if (eventType === 'session.updated') {
+            this.renewActivityTimeout()
+            console.info('Renewed container activity timeout')
+          }
+        })
       }
     }
     catch (error) {
