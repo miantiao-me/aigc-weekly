@@ -34,6 +34,7 @@ year_short: 26
 year_full: 2026
 start_date: 2026-03-22
 end_date: 2026-03-28
+current_date: 2026-03-25
 timezone: UTC+0
 ```
 
@@ -85,6 +86,7 @@ prompt: |
   year_full: {weekInfo.yearFull}
   start_date: {weekInfo.startDate}
   end_date: {weekInfo.endDate}
+  current_date: {weekInfo.currentDate}
   timezone: {weekInfo.timezone}
 ````
 
@@ -111,6 +113,7 @@ year_short: {weekInfo.yearShort}
 year_full: {weekInfo.yearFull}
 start_date: {weekInfo.startDate}
 end_date: {weekInfo.endDate}
+current_date: {weekInfo.currentDate}
 timezone: {weekInfo.timezone}
 title: {title}
 filename: {filename}
@@ -139,6 +142,7 @@ year_short: {weekInfo.yearShort}
 year_full: {weekInfo.yearFull}
 start_date: {weekInfo.startDate}
 end_date: {weekInfo.endDate}
+current_date: {weekInfo.currentDate}
 timezone: {weekInfo.timezone}
 ```
 

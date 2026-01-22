@@ -20,6 +20,7 @@ source_name: Hacker News
 week_id: Y26W12
 start_date: 2026-03-22
 end_date: 2026-03-28
+current_date: 2026-03-25
 timezone: UTC+0
 ```
 

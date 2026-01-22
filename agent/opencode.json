@@ -5,7 +5,12 @@
     "hostname": "0.0.0.0"
   },
   "autoupdate": false,
-  "permission": "allow",
+  "autoshare": true,
+  "permission": {
+    "*": "allow",
+    "lsp": "deny",
+    "question": "deny"
+  },
   "enabled_providers": ["openai-api", "google-api", "anthropic-api"],
   "default_agent": "build",
   "model": "{env:OPENCODE_MODEL}",
@@ -66,6 +71,10 @@
         "apiKey": "{env:GOOGLE_API_KEY}"
       },
       "models": {
+        "gemini-2.5-flash": {
+          "name": "Gemini 2.5 Flash",
+          "limit": { "context": 1000000, "output": 64000 }
+        },
         "gemini-3-flash-preview": {
           "name": "Gemini 3 Flash Preview",
           "limit": { "context": 1000000, "output": 64000 }

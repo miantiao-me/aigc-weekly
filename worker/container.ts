@@ -27,12 +27,13 @@ export class AgentContainer extends Container {
         await processSSEStream(reader, (event) => {
           const eventType = event.payload?.type
 
-          if (eventType !== 'message.part.updated')
-            console.info('SSE event:', event.payload)
-
           if (eventType === 'session.updated') {
             this.renewActivityTimeout()
             console.info('Renewed container activity timeout')
+          }
+
+          if (eventType !== 'message.part.updated') {
+            console.info('SSE event:', JSON.stringify(event.payload))
           }
         })
       }

@@ -27,6 +27,10 @@ export function getWeekInfo(targetDate) {
   const endDate = formatDateUTC(saturdayDate)
   const weekId = `Y${yearShort}W${weekNumber}`
 
+  // 当前真实日期（让下游大模型知道"今天是几号"）
+  const today = new Date()
+  const currentDate = formatDateUTC(today)
+
   return {
     weekId,
     weekNumber,
@@ -34,6 +38,7 @@ export function getWeekInfo(targetDate) {
     yearFull,
     startDate,
     endDate,
+    currentDate,
     timezone: 'UTC+0',
   }
 }
@@ -89,6 +94,7 @@ year_short: ${weekInfo.yearShort}
 year_full: ${weekInfo.yearFull}
 start_date: ${weekInfo.startDate}
 end_date: ${weekInfo.endDate}
+current_date: ${weekInfo.currentDate}
 timezone: ${weekInfo.timezone}
 \`\`\``
 }
