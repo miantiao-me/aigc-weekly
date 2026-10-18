@@ -167,15 +167,15 @@ prompt: |
 - 如果 Reviewer 返回修改意见，调用 `writer` 子任务进行幂等修改，再调用 `reviewer` 复核。
 - 此过程最多重复 3 次。
 
-### 6. 发布为草稿 (Phase 6)
+### 6. 发布周刊 (Phase 6)
 
-使用 `publish-weekly` 技能将 `{filename}` 幂等写入 Payload CMS，发布为草稿。
+使用 `publish-weekly` 技能将 `{filename}` 幂等写入 Payload CMS，状态设为已发布（`status: published`）。写入 `content` 前，移除文件开头由独立行 `---` 包裹的 YAML front matter，仅保留 Markdown 正文。
 
 **输入参数**：将完整周刊参数传递给技能（包含 `title` 与 `filename`）。
 
 **产出**：`published/{week_id}.json`（保存 CMS 响应，用于恢复与审计）。
 
-确认 Payload 草稿写入成功并将 CMS 响应落盘后，按 `publish-weekly` 技能执行可选 Bark 通知；通知失败不影响 Phase 6 完成状态，也不得删除落盘产物。
+确认 Payload 周刊发布成功并将 CMS 响应落盘后，按 `publish-weekly` 技能执行可选 Bark 通知；通知失败不影响 Phase 6 完成状态，也不得删除落盘产物。
 
 ---
 
